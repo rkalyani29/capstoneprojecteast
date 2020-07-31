@@ -31,7 +31,7 @@ pipeline {
 
 		stage('Set Current kubectl Context') {
 			steps {
-				withAWS(region:'us-west-2', credentials:'awscredentials') {
+				withAWS(region:'us-east-1', credentials:'awscredentials') {
 					sh '''
 						kubectl config use-context arn:aws:eks:us-west-2:187540882151:cluster/capstonecluster
 						
@@ -42,7 +42,7 @@ pipeline {
 
 		stage('Blue Deployment') {
 			steps {
-				withAWS(region:'us-west-2', credentials:'awscredentials') {
+				withAWS(region:'us-east-1', credentials:'awscredentials') {
 					sh '''
 						kubectl apply -f ./kubernetes/blue-deployment.yml
 					'''
@@ -52,7 +52,7 @@ pipeline {
 
 		stage('Green Deployment') {
 			steps {
-				withAWS(region:'us-west-2', credentials:'awscredentials') {
+				withAWS(region:'us-east-1', credentials:'awscredentials') {
 					sh '''
 						kubectl apply -f ./kubernetes/green-deployment.yml
 					'''
@@ -62,7 +62,7 @@ pipeline {
 
 		stage('Blue Deployment Service') {
 			steps {
-				withAWS(region:'us-west-2', credentials:'awscredentials') {
+				withAWS(region:'us-east-1', credentials:'awscredentials') {
 					sh '''
 						kubectl apply -f ./kubernetes/blue-service.yml
 					'''
@@ -74,7 +74,7 @@ pipeline {
 
 		stage('Green Deployment Service') {
 			steps {
-				withAWS(region:'us-west-2', credentials:'awscredentials') {
+				withAWS(region:'us-east-1', credentials:'awscredentials') {
 					sh '''
 						kubectl apply -f ./kubernetes/green-service.yml
 					'''
