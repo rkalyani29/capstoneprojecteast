@@ -1,0 +1,22 @@
+---
+kind: ReplicationController
+apiVersion: v1
+metadata:
+    name: greenctl
+    labels:
+        app: greenctl
+spec:
+    replicas: 1
+    selector:
+        app: greenctl
+    template:
+        metadata:
+            labels:
+                app: greenctl
+        spec:
+            containers:
+                - name: greenctl
+                  image: kalyani297/capstoneproject
+                  ports:
+                      - name: http
+                        containerPort: 80

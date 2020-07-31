@@ -1,0 +1,22 @@
+---
+kind: ReplicationController
+apiVersion: v1
+metadata:
+    name: bluectl
+    labels:
+        app: bluectl
+spec:
+    replicas: 1
+    selector:
+        app: bluectl
+    template:
+        metadata:
+            labels:
+                app: bluectl
+        spec:
+            containers:
+                - name: bluectl
+                  image: kalyani297/capstoneproject
+                  ports:
+                      - name: http
+                        containerPort: 80
